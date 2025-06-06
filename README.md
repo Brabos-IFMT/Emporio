@@ -45,4 +45,3 @@ Outras ferramentas: HTML, CSS, JavaScript
 🏫 Contexto Acadêmico
 
 Este projeto faz parte das ações extensionistas do IFMT, com foco em aproximar os alunos da realidade do mercado, integrando teoria e prática por meio do desenvolvimento de soluções tecnológicas aplicáveis a pequenos negócios.
-https://diogocesar-dev.github.io/dito/index.html
