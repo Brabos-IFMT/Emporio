@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Produto extends Model {
-    protected $fillable = ['nome', 'preco', 'quantidade_estoque'];
+class Produto extends Model
+{
+    protected $table = 'produtos'; // Nome da tabela no banco
 
-    public function vendas() {
-        return $this->belongsToMany(Venda::class, 'venda_produto')
-                    ->withPivot('quantidade', 'preco_unitario');
-    }
+    protected $primaryKey = 'ID_Produto'; // Nome da chave primária
+
+    public $timestamps = false;
+
+    // Campos que podem ser preenchidos em massa
+    protected $fillable = [
+        'Nome',
+        'Preco',
+        'Quantidade_Estoque'
+    ];
 }
