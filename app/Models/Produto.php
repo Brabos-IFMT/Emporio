@@ -12,7 +12,7 @@ class Produto extends Model
 
     public $timestamps = false;
 
-    // Campos que podem ser preenchidos em massa
+    
     protected $fillable = [
         'Nome',
         'Preco',
