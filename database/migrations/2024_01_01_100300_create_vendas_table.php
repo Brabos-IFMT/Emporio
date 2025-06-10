@@ -5,20 +5,19 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up(): void {
+    public function up()
+    {
         Schema::create('vendas', function (Blueprint $table) {
-            $table->id('id');
-            $table->decimal('valor', 6, 2);
-            $table->date('data');
-            $table->string('descricao', 200);
-            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
-            $table->char('usuario_id', 1);
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->id('ID_Venda');
+            $table->string('Descricao', 200);
+            $table->date('Data');
+            $table->decimal('Valor', 6, 2);
+            $table->unsignedBigInteger('ID_Cliente');
+            $table->unsignedBigInteger('ID_Usuario');
             $table->timestamps();
-        });
-    }
 
-    public function down(): void {
-        Schema::dropIfExists('vendas');
+            $table->foreign('ID_Cliente')->references('ID_Cliente')->on('clientes')->onDelete('cascade');
+            $table->foreign('ID_Usuario')->references('ID_Usuario')->on('usuarios')->onDelete('cascade');
+        });
     }
 };

@@ -5,17 +5,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up(): void {
+    public function up()
+    {
         Schema::create('produtos', function (Blueprint $table) {
-            $table->id('id'); 
-            $table->string('nome', 100);
-            $table->decimal('preco', 6, 2);
-            $table->integer('quantidade_estoque');
+
+            $table->id('ID_Produto');
+            $table->string('Nome', 100);
+            $table->decimal('Preco', 6, 2);
+            $table->integer('Quantidade_Estoque');
             $table->timestamps();
         });
     }
-
-    public function down(): void {
-        Schema::dropIfExists('produtos');
-    }
 };
+
