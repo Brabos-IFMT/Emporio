@@ -17,11 +17,11 @@
 
     <form method="POST" action="{{ route('login.usuario') }}">
         @csrf
-        <label for="Login">Email:</label>
-        <input type="email" id="Login" name="Login" required><br><br>
+        <label for="login">Email:</label>
+        <input type="email" id="login" name="login" required><br><br>
 
-        <label for="Senha">Senha:</label>
-        <input type="password" id="Senha" name="Senha" required><br><br>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br><br>
 
         <button type="submit">Entrar</button>
     </form>
