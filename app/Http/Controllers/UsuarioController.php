@@ -10,21 +10,21 @@ class UsuarioController extends Controller
 {
     public function registroForm()
     {
-        return view('registro');
+        return view('auth.registro');
     }
 
     public function registrar(Request $request)
     {
         $request->validate([
-            'Nome' => 'required|string|max:100',
-            'Login' => 'required|email|unique:usuarios,Login',
-            'Senha' => 'required|string|min:6',
+            'nome' => 'required|string|max:100',
+            'login' => 'required|email|unique:usuarios,login',
+            'senha' => 'required|string|min:6',
         ]);
 
         Usuario::create([
-            'Nome' => $request->Nome,
-            'Login' => $request->Login,
-            'Senha' => bcrypt($request->Senha),
+            'nome' => $request->nome,
+            'login' => $request->login,
+            'senha' => bcrypt($request->senha),
         ]);
 
         return redirect()->route('login.form')->with('sucesso', 'Usuário registrado com sucesso!');
@@ -32,24 +32,24 @@ class UsuarioController extends Controller
 
     public function loginForm()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'Login' => 'required|email',
-            'Senha' => 'required',
+            'login' => 'required|email',
+            'senha' => 'required',
         ]);
 
-        $usuario = Usuario::where('Login', $request->Login)->first();
+        $usuario = Usuario::where('login', $request->login)->first();
 
-        if ($usuario && Hash::check($request->Senha, $usuario->Senha)) {
+        if ($usuario && Hash::check($request->senha, $usuario->senha)) {
             session(['usuario' => $usuario]);
             return redirect()->route('area_trabalho');
         }
 
-        return back()->with('erro', 'Login ou senha inválidos.');
+        return back()->with('erro', 'login ou senha inválidos.');
     }
 
     public function areaTrabalho()

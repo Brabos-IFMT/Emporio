@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class PagamentoPendente extends Model
 {
     protected $table = 'pagamento_pendentes';
-    protected $primaryKey = 'ID_PagamentoPendente';
+    protected $primaryKey = 'id_pagamento_pendente';
     public $timestamps = true;
 
-    protected $fillable = ['Data_Vencimento', 'Valor_Pendente', 'Status', 'ID_Venda'];
+    protected $fillable = ['data_vencimento', 'valor_pendente', 'status', 'id_venda'];
 
     public function venda()
     {
-        return $this->belongsTo(Venda::class, 'ID_Venda', 'ID_Venda');
+        return $this->belongsTo(Venda::class, 'id_Venda', 'id_Venda');
     }
 }
 

@@ -8,16 +8,16 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('vendas', function (Blueprint $table) {
-            $table->id('ID_Venda');
-            $table->string('Descricao', 200);
-            $table->date('Data');
-            $table->decimal('Valor', 6, 2);
-            $table->unsignedBigInteger('ID_Cliente');
-            $table->unsignedBigInteger('ID_Usuario');
+            $table->id('id_venda');
+            $table->string('descricao', 200);
+            $table->date('data');
+            $table->decimal('valor', 6, 2);
+            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('id_usuario');
             $table->timestamps();
 
-            $table->foreign('ID_Cliente')->references('ID_Cliente')->on('clientes')->onDelete('cascade');
-            $table->foreign('ID_Usuario')->references('ID_Usuario')->on('usuarios')->onDelete('cascade');
+            $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
         });
     }
 };

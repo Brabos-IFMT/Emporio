@@ -22,13 +22,13 @@
     <form method="POST" action="{{ route('registrar.usuario') }}">
         @csrf
         <label>Nome:</label>
-        <input type="text" name="Nome" required><br>
+        <input type="text" name="nome" required><br>
 
         <label>Email:</label>
-        <input type="email" name="Login" required><br>
+        <input type="email" name="login" required><br>
 
         <label>Senha:</label>
-        <input type="password" name="Senha" required><br>
+        <input type="password" name="senha" required><br>
 
         <button type="submit">Registrar</button>
     </form>

@@ -6,29 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-<<<<<<< Updated upstream
-    protected $table = 'produtos'; // Nome da tabela no banco
 
-    protected $primaryKey = 'ID_Produto'; // Nome da chave primária
-
-    public $timestamps = false;
-
-    
-    protected $fillable = [
-        'Nome',
-        'Preco',
-        'Quantidade_Estoque'
-    ];
-=======
     protected $table = 'produtos';
-    protected $primaryKey = 'ID_Produto';
+    protected $primaryKey = 'id_produto';
     public $timestamps = true;
 
-    protected $fillable = ['Nome', 'Preco', 'Quantidade_Estoque'];
+    protected $fillable = ['nome', 'preco', 'quantidade_estoque'];
 
     public function vendaProdutos()
     {
-        return $this->hasMany(Venda_Produto::class, 'ID_Produto', 'ID_Produto');
+        return $this->hasMany(Venda_Produto::class, 'id_produto', 'id_produto');
     }
->>>>>>> Stashed changes
 }
