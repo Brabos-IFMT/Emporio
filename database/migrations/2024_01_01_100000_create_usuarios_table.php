@@ -8,10 +8,11 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->id('ID_Usuario');
-            $table->string('Nome', 100);
-            $table->string('Login', 100);
-            $table->string('Senha', 80);
+            $table->id('id_usuario');
+            $table->string('nome', 100);
+            $table->string('login', 100);
+            $table->string('senha', 80);
+            $table->enum('tipo_usuario', ['admin', 'comum'])->default("comum");
             $table->timestamps();
         });
     }

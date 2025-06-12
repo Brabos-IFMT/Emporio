@@ -9,10 +9,10 @@ return new class extends Migration {
     {
         Schema::create('produtos', function (Blueprint $table) {
 
-            $table->id('ID_Produto');
-            $table->string('Nome', 100);
-            $table->decimal('Preco', 6, 2);
-            $table->integer('Quantidade_Estoque');
+            $table->id('id_produto');
+            $table->string('nome', 100);
+            $table->decimal('preco', 6, 2);
+            $table->integer('quantidade_estoque');
             $table->timestamps();
         });
     }

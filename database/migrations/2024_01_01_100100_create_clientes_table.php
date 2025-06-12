@@ -9,10 +9,10 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id('ID_Cliente');
-            $table->string('Nome', 100);
-            $table->string('Email', 100);
-            $table->string('Telefone', 80);
+            $table->id('id_cliente');
+            $table->string('nome', 100);
+            $table->string('email', 100);
+            $table->string('telefone', 80);
             $table->timestamps();
         });
     }

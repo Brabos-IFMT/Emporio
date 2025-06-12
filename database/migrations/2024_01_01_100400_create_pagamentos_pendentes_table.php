@@ -8,14 +8,14 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('pagamento_pendentes', function (Blueprint $table) {
-            $table->id('ID_PagamentoPendente');
-            $table->date('Data_Vencimento');
-            $table->decimal('Valor_Pendente', 6, 2);
-            $table->string('Status', 20);
-            $table->unsignedBigInteger('ID_Venda');
+            $table->id('id_pagamento_pendente');
+            $table->date('data_vencimento');
+            $table->decimal('valor_pendente', 6, 2);
+            $table->string('status', 20);
+            $table->unsignedBigInteger('id_venda');
             $table->timestamps();
 
-            $table->foreign('ID_Venda')->references('ID_Venda')->on('vendas')->onDelete('cascade');
+            $table->foreign('id_venda')->references('id_venda')->on('vendas')->onDelete('cascade');
         });
     }
 };
