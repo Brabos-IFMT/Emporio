@@ -7,28 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Venda extends Model
 {
     protected $table = 'vendas';
-    protected $primaryKey = 'ID_Venda';
+    protected $primaryKey = 'id_venda';
     public $timestamps = true;
 
-    protected $fillable = ['Descricao', 'Data', 'Valor', 'ID_Cliente', 'ID_Usuario'];
+    protected $fillable = ['descricao', 'data', 'valor', 'id_cliente', 'id_usuario'];
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'ID_Cliente', 'ID_Cliente');
+        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
     }
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'ID_Usuario', 'ID_Usuario');
+        return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
     }
 
     public function vendaProdutos()
     {
-        return $this->hasMany(Venda_Produto::class, 'ID_Venda', 'ID_Venda');
+        return $this->hasMany(Venda_Produto::class, 'id_venda', 'id_venda');
     }
 
     public function pagamentoPendente()
     {
-        return $this->hasOne(PagamentoPendente::class, 'ID_Venda', 'ID_Venda');
+        return $this->hasOne(PagamentoPendente::class, 'id_venda', 'id_venda');
     }
 }

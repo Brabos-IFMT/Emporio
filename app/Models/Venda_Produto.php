@@ -11,15 +11,15 @@ class Venda_Produto extends Model
     public $incrementing = false;
     protected $primaryKey = null;
 
-    protected $fillable = ['ID_Venda', 'ID_Produto', 'Preco_Unitario', 'Quantidade'];
+    protected $fillable = ['id_venda', 'id_produto', 'preco_unitario', 'quantidade'];
 
     public function venda()
     {
-        return $this->belongsTo(Venda::class, 'ID_Venda', 'ID_Venda');
+        return $this->belongsTo(Venda::class, 'id_venda', 'id_venda');
     }
 
     public function produto()
     {
-        return $this->belongsTo(Produto::class, 'ID_Produto', 'ID_Produto');
+        return $this->belongsTo(Produto::class, 'id_produto', 'id_produto');
     }
 }
