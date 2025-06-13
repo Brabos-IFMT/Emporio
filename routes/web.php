@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/registro', [UsuarioController::class, 'registroForm'])->name('registro.form');
 Route::post('/registro', [UsuarioController::class, 'registrar'])->name('registrar.usuario');
@@ -13,3 +15,4 @@ Route::post('/logout', [UsuarioController::class, 'logout'])->name('logout');
 Route::get('/area-trabalho', [UsuarioController::class, 'areaTrabalho'])->name('area_trabalho');
 
 
+Route::resource('produtos', ProdutoController::class);
