@@ -4,71 +4,63 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Validator;
 
 class ProdutoController extends Controller
 {
-    // Mostrar todos os produtos
     public function index()
     {
         $produtos = Produto::all();
         return view('produtos.index', compact('produtos'));
     }
 
-    // Mostrar o formulário para criar um novo produto
     public function create()
     {
         return view('produtos.create');
     }
 
-    // Salvar um novo produto no banco de dados
     public function store(Request $request)
     {
-        $request->validate([
-            'Nome' => 'required|max:100',
-            'Preco' => 'required|numeric',
-            'Quantidade_Estoque' => 'required|integer',
-        ]);
+        $dados = $request->all();
+        $dados['preco'] = (float) str_replace(['R$', '.', ','], ['', '', '.'], $dados['preco']);
 
-        Produto::create($request->all());
+        $validated = Validator::make($dados, [
+            'nome' => 'required|string|max:100',
+            'preco' => 'required|numeric',
+            'quantidade_estoque' => 'required|integer|min:1',
+        ])->validate();
+
+        Produto::create($validated);
 
         return redirect()->route('produtos.index')
                          ->with('success', 'Produto cadastrado com sucesso!');
     }
 
-    // Mostrar os detalhes de um produto (opcional)
-    public function show($id)
+    public function edit($produto)
     {
-        $produto = Produto::findOrFail($id);
-        return view('produtos.show', compact('produto'));
-    }
-
-    // Mostrar o formulário para editar um produto
-    public function edit($id)
-    {
-        $produto = Produto::findOrFail($id);
+        $produto = Produto::findOrFail($produto);
         return view('produtos.edit', compact('produto'));
     }
 
-    // Atualizar os dados do produto no banco
-    public function update(Request $request, $id)
+    public function update(Request $request, Produto $produto)
     {
-        $request->validate([
-            'Nome' => 'required|max:100',
-            'Preco' => 'required|numeric',
-            'Quantidade_Estoque' => 'required|integer',
-        ]);
+        $dados = $request->all();
+        $dados['preco'] = (float) str_replace(['R$', '.', ','], ['', '', '.'], $dados['preco']);
 
-        $produto = Produto::findOrFail($id);
-        $produto->update($request->all());
+        $validated = Validator::make($dados, [
+            'nome' => 'required|string|max:100',
+            'preco' => 'required|numeric',
+            'quantidade_estoque' => 'required|integer|min:1',
+        ])->validate();
+
+        $produto->update($validated);
 
         return redirect()->route('produtos.index')
                          ->with('success', 'Produto atualizado com sucesso!');
     }
 
-    // Excluir o produto do banco de dados
-    public function destroy($id)
+    public function destroy(Produto $produto)
     {
-        $produto = Produto::findOrFail($id);
         $produto->delete();
 
         return redirect()->route('produtos.index')
