@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendaController;
+
 
 Route::get('/registro', [UsuarioController::class, 'registroForm'])->name('registro.form');
 Route::post('/registro', [UsuarioController::class, 'registrar'])->name('registrar.usuario');
@@ -16,3 +18,4 @@ Route::get('/area-trabalho', [UsuarioController::class, 'areaTrabalho'])->name('
 
 
 Route::resource('produtos', ProdutoController::class);
+Route::resource('vendas', VendaController::class);
