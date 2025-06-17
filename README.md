@@ -1,11 +1,3 @@
-1 - Criar o repositório no GitHub;
-
-link repositório: https://github.com/Brabos-IFMT
-
-Compartilhar o repositório de forma colaborativa.
-
-2 - Elaborar o Readme.md
-
 Sistema de Gerenciamento para Empório
 
 Projeto Extensionista I - IFMT | 2025/1
