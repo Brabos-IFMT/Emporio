@@ -4,9 +4,6 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendaController;
-use App\Http\Controllers\ClienteController;
-
-
 
 
 Route::get('/registro', [UsuarioController::class, 'registroForm'])->name('registro.form');
@@ -22,4 +19,3 @@ Route::get('/area-trabalho', [UsuarioController::class, 'areaTrabalho'])->name('
 
 Route::resource('produtos', ProdutoController::class);
 Route::resource('vendas', VendaController::class);
-Route::resource('clientes', ClienteController::class);
