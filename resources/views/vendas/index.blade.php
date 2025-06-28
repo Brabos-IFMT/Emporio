@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Vendas</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
@@ -143,8 +144,7 @@
       </nav>
       <!-- FIM - BARRA LATERAL -->
 
-
-
+     
       <!-- INÍCIO - CONTEÚDO DA PÁGINA -->
       <!-- partial -->
       <div class="main-panel">
@@ -268,6 +268,39 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if(session('toast'))
+            @if(session('sucesso'))
+                Toastify({
+                    text: "{{ session('sucesso') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#77DD77",
+                    }
+                }).showToast();
+            @endif
+
+            @if(session('erro'))
+                Toastify({
+                    text: "{{ session('erro') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#FF6961",
+                    }
+                }).showToast();
+            @endif
+        @endif
+
+
+       
+    </script>
 </body>
 
 </html>
