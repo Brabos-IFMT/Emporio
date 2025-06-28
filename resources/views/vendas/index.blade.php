@@ -5,105 +5,158 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Registro de Venda</title>
+  <title>Vendas</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="./../../../public/vendors/feather/feather.css">
-  <link rel="stylesheet" href="./../../../public/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="./../../../public/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="./../../../public/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="./../../../public/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="../../js/select.dataTables.min.css">
+  <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css') }}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="./../../../public/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="./../../../public/vendors/select2/select2.min.css">
-  <link rel="stylesheet" href="./../../../public/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-  <!-- End plugin css for this page -->
-  <link rel="shortcut icon" href="./../../../public/images/favicon.png" />
-  <style>
-    body, html {
-      height: 100%;
-      margin: 5px;
-      padding: 0;
-      background: #f5f5f5;
-    }
-  </style>
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
 <body>
-  <div class="layout_venda">
-    <nav class="sidebar_intern">
 
-        <div class="row"> 
-        <div class="col"> 
-      <a class="brand-logo-mini" href="index.html"> <!-- URL CORRIGIR ROTA - ME EXCLUA! --> <img src="images/logo-mini.svg" width="50px" alt="logo"/></a>
-        </div>
-        <div class="col"> <h6>{{ session('usuario')->nome }}</h6> </div>
-        </div>
+  <div class="container-scroller">
+    
+    
+    <!-- partial:partials/_navbar.html -->
 
-      <h4 class="card-title mt-2">Realizar Nova Venda</h4>
-      <form class="forms-sample" action="{{ route('vendas.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-          <label class="font-weight-bold">Cliente</label>
-          <select class="js-example-basic-single w-100" name="id_cliente">
-            @foreach ($clientes as $cliente)
-                <option value="{{ $cliente->id_cliente }}" {{ old('id_cliente') == $cliente->id_cliente ? 'selected' : '' }}>
-                    {{ $cliente->nome }}
-                </option>
-            @endforeach
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Descrição</label>
-          <textarea class="form-control" id="exampleTextarea1" rows="2" name="descricao" value="{{ old('descricao') }}"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="date" class="form-control" placeholder="Data" name="data" value="{{ old('data', now()->toDateString()) }}">
-        </div>
-        <div class="form-group">
-          <label>Produto</label>
-          <select class="js-example-basic-single w-100" name="produtos[0][id_produto]">
-            @foreach ($produtos as $produto)
-                <option value="{{ $produto->id_produto }}">{{ $produto->nome }}</option>
-            @endforeach
-          </select>
-        </div>
-        <div class="row">
-        <div class="form-group col">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <input type="text" name="produtos[0][preco_unitario]" placeholder="Preço" class="form-control">
+    <!-- INÍCIO - BARRA SUPERIOR -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="{{ route('area_trabalho') }}"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-h.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('area_trabalho') }}"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-mini.svg" height="15rem" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+
+        <!-- Foto do Usuário -->
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown"><!-- ME EXCLUA OU NÃO | URL CORRIGIR ROTA -->
+              <img src="images/faces/face28.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              @if(session('usuario'))
+              <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout/Sair
+              </button>
+              </form>
+              @endif
             </div>
-          </div>
-        </div>
-        
-        <div class="form-grou col">
-          <input type="number" name="produtos[0][quantidade]" placeholder="Quantidade" class="form-control">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label>Valor Total</label>
-        <input type="text" name="valor" class="form-control" value="{{ old('valor') }}">
-        </div>
-
-        
-
-        <button type="submit" class="btn btn-info mr-2">REGISTRAR</button>
-        <button type="reset" class="btn btn-secondary">LIMPAR</button>
-      </form>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
     </nav>
-    <div class="conten_venda">
+    <!-- FIM - BARRA SUPERIOR -->
+
+
+    <!-- partial -->
+     <!-- INÍCIO - BARRA LATERAL -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('area_trabalho') }}"> <!-- URL CORRIGIR ROTA - ME EXCLUA! -->
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Página Inicial</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Usuário</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('registro.form') }}"> Criar Usuário </a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendas.index') }}"> <!-- URL CORRIGIR ROTA - ME EXCLUA! -->
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Vendas</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('produtos.index') }}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Produtos</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('clientes.index') }}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Clientes</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendas.create') }}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">PDV</span>
+            </a>
+          </li>
+
+          <!-- OPÇÃO DE TRATAMENTO DE ERRO DE URL -->
+           <!--
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+              <i class="icon-ban menu-icon"></i>
+              <span class="menu-title">Páginas de Erro</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="error">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+              </ul>
+            </div>
+          </li>
+          -->
+
+        </ul>
+      </nav>
+      <!-- FIM - BARRA LATERAL -->
+
+
+
+      <!-- INÍCIO - CONTEÚDO DA PÁGINA -->
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+   <div class="conten_venda">
       
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title mb-0">Vendas</p>
+                  <p class="card-title mb-0">Histórico de Vendas</p>
                   <div class="pt-3">
                   <div class="table-responsive">
                     <table class="table table-striped table-borderless">
@@ -148,37 +201,73 @@
 
     </div>
   </div>
+
+
+          
+            
+
+        <!-- FIM - CONTEÚDO DA PÁGINA -->
+
+
+        <!-- INÍCIO - RODAPÉ -->
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025. TSI - Brabos. Todos os direitos Reservados.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Disciplina: Oficina de Prática Extensionista I</span>
+          </div>
+
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Diogo, Guilherme, Leandro, Valéria, Pytagoras, Wilker e Yuri</a></span> 
+          </div>
+
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Instituo Federal de Mato Grosso - <a href="https://cba.ifmt.edu.br" target="_blank">Cel. Octayde jorge da Silva</a></span> 
+          </div>
+
+        </footer> 
+        <!-- FIM - RODAPÉ -->
+
+
+        <!-- partial -->
+      </div>
+
+      <!-- main-panel ends -->
+    </div>
+
+    <!-- page-body-wrapper ends -->
+  </div>
+  
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="./../../../public/vendors/js/vendor.bundle.base.js"></script>
+  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="./../../../public/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="./../../../public/vendors/select2/select2.min.js"></script>
-  <!-- End plugin js for this page -->
+  <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+  <script src="js/dataTables.select.min.js"></script>
 
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="./../../../public/vendors/chart.js/Chart.min.js"></script>
-  <script src="./../../../public/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="./../../../public/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <script src="../../js/dataTables.select.min.js"></script>
+  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+  <script src="js/dataTables.select.min.js"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/dashboard.js"></script>
-  <script src="../../js/typeahead.js"></script>
-  <script src="../../js/select2.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
 
 </html>
-

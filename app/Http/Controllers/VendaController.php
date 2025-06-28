@@ -15,8 +15,11 @@ class VendaController extends Controller
 {
     public function index()
     {
+        $clientes = Cliente::all();
+        $usuarios = Usuario::all();
+        $produtos = Produto::all();
         $vendas = Venda::with('cliente', 'usuario')->get();
-        return view('vendas.index', compact('vendas'));
+        return view('vendas.index', compact('clientes', 'usuarios', 'produtos', 'vendas'));
     }
 
     public function create()
@@ -24,7 +27,8 @@ class VendaController extends Controller
         $clientes = Cliente::all();
         $usuarios = Usuario::all();
         $produtos = Produto::all();
-        return view('vendas.create', compact('clientes', 'usuarios', 'produtos'));
+        $vendas = Venda::with('cliente', 'usuario')->get();
+        return view('vendas.create', compact('clientes', 'usuarios', 'produtos', 'vendas'));
     }
 
 

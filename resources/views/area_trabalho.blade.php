@@ -8,19 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Tela de Início</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="./../../public/vendors/feather/feather.css">
-  <link rel="stylesheet" href="./../../public/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="./../../public/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="./../../public/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="./../../public/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
+  <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css') }}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="./../../public/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="./../../public/images/favicon.png" />
+  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
 <body>
 
@@ -32,8 +32,8 @@
     <!-- INÍCIO - BARRA SUPERIOR -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="#"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-h.png" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="#"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-mini.svg" height="15rem" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ route('area_trabalho') }}"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-h.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('area_trabalho') }}"><!-- URL CORRIGIR ROTA - ME EXCLUA! --><img src="images/logo-mini.svg" height="15rem" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -76,7 +76,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="#"> <!-- URL CORRIGIR ROTA - ME EXCLUA! -->
+            <a class="nav-link" href="{{ route('area_trabalho') }}"> <!-- URL CORRIGIR ROTA - ME EXCLUA! -->
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Página Inicial</span>
             </a>
@@ -106,6 +106,20 @@
             <a class="nav-link" href="{{ route('produtos.index') }}">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Produtos</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('clientes.index') }}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Clientes</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('vendas.create') }}">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">PDV</span>
             </a>
           </li>
 
@@ -208,25 +222,25 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="./../../public/vendors/js/vendor.bundle.base.js"></script>
+  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="./../../public/vendors/chart.js/Chart.min.js"></script>
-  <script src="./../../public/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="./../../public/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <script src="../js/dataTables.select.min.js"></script>
+  <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+  <script src="js/dataTables.select.min.js"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/template.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/dashboard.js"></script>
-  <script src="../js/Chart.roundedBarCharts.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
 
