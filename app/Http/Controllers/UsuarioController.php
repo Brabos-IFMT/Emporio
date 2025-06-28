@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Venda;
+use App\Models\Produto;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -27,7 +30,7 @@ class UsuarioController extends Controller
             'senha' => bcrypt($request->senha),
         ]);
 
-        return redirect()->route('login.form')->with('sucesso', 'Usuário registrado com sucesso!');
+        return redirect()->route('login.form')->with('sucesso', 'Usuário registrado com sucesso!')->with('toast', true);
     }
 
     public function loginForm()
@@ -46,10 +49,11 @@ class UsuarioController extends Controller
 
         if ($usuario && Hash::check($request->senha, $usuario->senha)) {
             session(['usuario' => $usuario]);
-            return redirect()->route('area_trabalho');
+            return redirect()->route('area_trabalho')
+                ->with('sucesso', 'Login realizado com sucesso!')
+                ->with('toast', true);
         }
-
-        return back()->with('erro', 'login ou senha inválidos.');
+        return redirect()->back()->with('erro', 'Login ou senha inválidos.')->with('toast', true);
     }
 
     public function areaTrabalho()
@@ -57,7 +61,8 @@ class UsuarioController extends Controller
         if (!session('usuario')) {
             return redirect()->route('login.form');
         }
-
+        
+        
         return view('area_trabalho');
 
     }

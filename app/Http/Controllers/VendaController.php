@@ -47,7 +47,7 @@ class VendaController extends Controller
                 'data' => $request->data,
                 'valor' => $request->valor,
                 'id_cliente' => $request->id_cliente,
-                'id_usuario' => $usuario->id_usuario,
+                'id_usuario' => $request->id_usuario,
                 
             ]);
             
@@ -61,10 +61,10 @@ class VendaController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('vendas.index')->with('sucesso', 'Venda cadastrada com sucesso!');
+            return redirect()->route('vendas.index')->with('sucesso', 'Venda cadastrada com sucesso!')->with('toast', true);
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->withErrors('Erro ao cadastrar venda: ' . $e->getMessage());
+            return back()->withErrors('Erro ao cadastrar venda: ' . $e->getMessage())->with('toast', true);
         }
     }
 

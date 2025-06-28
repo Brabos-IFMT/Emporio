@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Clientes</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
@@ -157,9 +158,7 @@
               </a>
             </div>
 
-            @if(session('success'))
-              <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
+            
 
             <div class="table-responsive">
               <table class="table table-hover">
@@ -252,13 +251,31 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if(session('toast'))
+            @if(session('sucesso'))
+                Toastify({
+                    text: "{{ session('sucesso') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#77DD77",
+                    }
+                }).showToast();
+            @endif
 
+        @endif
+
+    </script> 
 </body>
-
+  
 </html>
 
-<script>
+<!-- <script>
   function confirmarExclusao(form) {
     return confirm('Tem certeza que deseja excluir este cliente?');
   }
-</script>
+</script> -->

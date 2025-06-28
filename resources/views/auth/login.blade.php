@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Login Empório</title>
   <!-- plugins:css -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="../../vendors/feather/feather.css">
   <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
@@ -32,13 +33,7 @@
               <h4>Olá, Vamos Começar!</h4>
               <h6 class="font-weight-light">Insira suas credenciais para entrar</h6>
               
-              @if(session('erro'))
-                <p style="color: red">{{ session('erro') }}</p>
-              @endif
-
-              @if(session('sucesso'))
-                <p style="color: green">{{ session('sucesso') }}</p>
-              @endif
+              
 
               <form class="pt-3" method="POST" action="{{ route('login.usuario') }}">
                 @csrf
@@ -83,6 +78,36 @@
   <script src="../../js/settings.js"></script>
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if(session('toast'))
+            @if(session('sucesso'))
+                Toastify({
+                    text: "{{ session('sucesso') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#77DD77",
+                    }
+                }).showToast();
+            @endif
+
+            @if(session('erro'))
+                Toastify({
+                    text: "{{ session('erro') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#FF6961",
+                    }
+                }).showToast();
+            @endif
+        @endif       
+    </script>
 </body>
 
 </html>

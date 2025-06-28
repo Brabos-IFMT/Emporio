@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Emporio Seu Prozo</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 </head>
@@ -44,13 +45,16 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                @if(session('erro'))
-        <p style="color: red">{{ session('erro') }}</p>
-    @endif
+                
 
-    @if(session('sucesso'))
-        <p style="color: green">{{ session('sucesso') }}</p>
-    @endif
+                @if(session('sucesso'))
+                  <div >{{ session('sucesso') }}</div>
+                @endif
+
+                @if(session('erro'))
+                  <div >{{ session('erro') }}</div>
+                @endif
+
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
            <div class="card-body">
@@ -114,6 +118,39 @@
   <script src="../../js/template.js"></script>
   <script src="../../js/settings.js"></script>
   <script src="../../js/todolist.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if(session('toast'))
+            @if(session('sucesso'))
+                Toastify({
+                    text: "{{ session('sucesso') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#77DD77",
+                    }
+                }).showToast();
+            @endif
+
+            @if(session('erro'))
+                Toastify({
+                    text: "{{ session('erro') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#FF6961",
+                    }
+                }).showToast();
+            @endif
+        @endif
+
+
+        
+    </script>
 </body>
 
 </html>

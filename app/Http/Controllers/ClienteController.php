@@ -29,7 +29,7 @@ class ClienteController extends Controller
         Cliente::create($request->all());
 
         return redirect()->route('clientes.index')
-                         ->with('success', 'Cliente cadastrado com sucesso!');
+                         ->with('sucesso', 'Cliente cadastrado com sucesso!')->with('toast', true);
     }
 
     public function show($id)
@@ -56,7 +56,7 @@ class ClienteController extends Controller
         $cliente->update($request->all());
 
         return redirect()->route('clientes.index')
-                         ->with('success', 'Cliente atualizado com sucesso!');
+                         ->with('sucesso', 'Cliente atualizado com sucesso!')->with('toast', true);
     }
 
     public function destroy($id)
@@ -65,6 +65,6 @@ class ClienteController extends Controller
         $cliente->delete();
 
         return redirect()->route('clientes.index')
-                         ->with('success', 'Cliente removido com sucesso!');
+                         ->with('sucesso', 'Cliente removido com sucesso!')->with('toast', true);
     }
 }

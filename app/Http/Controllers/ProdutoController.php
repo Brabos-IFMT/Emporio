@@ -33,7 +33,7 @@ class ProdutoController extends Controller
         Produto::create($validated);
 
         return redirect()->route('produtos.index')
-                         ->with('success', 'Produto cadastrado com sucesso!');
+                         ->with('sucesso', 'Produto cadastrado com sucesso!')->with('toast', true);
     }
 
     public function edit($produto)
@@ -56,7 +56,7 @@ class ProdutoController extends Controller
         $produto->update($validated);
 
         return redirect()->route('produtos.index')
-                         ->with('success', 'Produto atualizado com sucesso!');
+                         ->with('sucesso', 'Produto atualizado com sucesso!')->with('toast', true);
     }
 
     public function destroy(Produto $produto)
@@ -64,6 +64,6 @@ class ProdutoController extends Controller
         $produto->delete();
 
         return redirect()->route('produtos.index')
-                         ->with('success', 'Produto excluído com sucesso!');
+                         ->with('sucesso', 'Produto excluído com sucesso!')->with('toast', true);
     }
 }
