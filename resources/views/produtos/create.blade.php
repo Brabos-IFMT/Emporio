@@ -118,5 +118,20 @@
     valor = valor.replace(".", ",");
     valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     input.value = 'R$ ' + valor;
+
+    calcularValorTotal();
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('input[name="quantidade_estoque"]').addEventListener('input', calcularValorTotal);
+  });
+
+  function calcularValorTotal() {
+    let precoInput = document.getElementById('preco').value.replace(/\D/g, '');
+    let preco = parseInt(precoInput || 0) / 100;
+    let quantidade = parseInt(document.querySelector('input[name="quantidade_estoque"]').value) || 0;
+    let total = preco * quantidade;
+
+    document.getElementById('valorTotal').value = 'R$ ' + total.toFixed(2).replace(".", ",");
   }
 </script>

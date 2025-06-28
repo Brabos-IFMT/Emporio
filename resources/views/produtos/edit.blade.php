@@ -87,6 +87,11 @@
                     @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="valorTotal">Valor Total (Estimado)</label>
+                        <input type="text" class="form-control" id="valorTotal" readonly placeholder="R$ 0,00">
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
                 </div>
@@ -120,5 +125,21 @@
     valor = valor.replace(".", ",");
     valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     input.value = 'R$ ' + valor;
+
+    calcularValorTotal();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('input[name="quantidade_estoque"]').addEventListener('input', calcularValorTotal);
+    calcularValorTotal(); // inicializa com valores existentes
+  });
+
+  function calcularValorTotal() {
+    let precoInput = document.querySelector('input[name="preco"]').value.replace(/\D/g, '');
+    let preco = parseInt(precoInput || 0) / 100;
+    let quantidade = parseInt(document.querySelector('input[name="quantidade_estoque"]').value) || 0;
+    let total = preco * quantidade;
+
+    document.getElementById('valorTotal').value = 'R$ ' + total.toFixed(2).replace(".", ",");
   }
 </script>
