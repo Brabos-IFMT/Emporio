@@ -165,9 +165,9 @@
                             <th>Código</th>
                             <th>Descrição</th>
                             <th>Cliente</th>
-                            <th>Usuário</th>
-                            <th>Valor</th>
-                            <th>Data</th>
+                            <th>Vendedor</th>
+                            <th>Valor Total</th>
+                            <th>Data da Venda</th>
                             <th>Ações</th>
                         </tr>  
                       </thead>
@@ -181,7 +181,6 @@
                             <td>R$ {{ number_format($venda->valor, 2, ',', '.') }}</td>
                             <td>{{ \Carbon\Carbon::parse($venda->data)->format('d/m/Y') }}</td>
                             <td>
-                                
                                 <form action="{{ route('vendas.destroy', $venda->id_venda) }}" method="POST" style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-sm btn-danger" onclick="return confirm('Excluir venda?')">Excluir</button>
