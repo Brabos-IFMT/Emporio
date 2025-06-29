@@ -24,3 +24,8 @@ Route::get('/area-trabalho', [AreaTrabalhoController::class, 'index'])->name('ar
 Route::resource('produtos', ProdutoController::class);
 Route::resource('vendas', VendaController::class);
 Route::resource('clientes', ClienteController::class);
+
+Route::post("/registrar-produto", [VendaController::class, "registrarProdutoVenda"])->name("pdv.adicionar");
+Route::post("/limpar-produtos", [VendaController::class, "limparProdutoVenda"])->name("pdv.limpar");
+Route::delete("/remover-produto/{id}", [VendaController::class, "RemoverProdutoVenda"])->name("pdv.removerProduto");
+

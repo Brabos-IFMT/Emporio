@@ -35,6 +35,10 @@ class UsuarioController extends Controller
 
     public function loginForm()
     {
+        if (session()->has('usuario')) {
+            return redirect()->back();
+        }
+
         return view('auth.login');
     }
 
@@ -61,15 +65,14 @@ class UsuarioController extends Controller
         if (!session('usuario')) {
             return redirect()->route('login.form');
         }
-        
-        
-        return view('area_trabalho');
 
+
+        return view('area_trabalho');
     }
 
     public function logout()
     {
-        session()->forget('usuario');
+        session()->flush();
         return redirect()->route('login.form');
     }
 }
