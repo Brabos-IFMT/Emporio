@@ -18,10 +18,10 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Linguagem:** PHP  
-- **Frameworks:** Laravel, Bootstrap  
+- **Linguagem:** PHP e JavaScript  
+- **Frameworks:** Laravel e Bootstrap  
 - **Banco de Dados:** PostgreSQL  
-- **Outras ferramentas:** HTML, CSS, JavaScript, Trello
+- **Outras ferramentas:** CSS, Toastify JS, Git, Trello
 
 ## 📍 Resultados e Desafios
 
