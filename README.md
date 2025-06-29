@@ -1,47 +1,45 @@
-1 - Criar o repositório no GitHub;
+# 🛒 Sistema de Gerenciamento para Empório
 
-link repositório: https://github.com/Brabos-IFMT
+Este repositório abriga o desenvolvimento de um sistema web criado como parte do **Projeto Extensionista I**, do curso de **Tecnologia em Sistemas para Internet**, oferecido pelo **Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso – IFMT Campus Octayde Jorge**.
 
-Compartilhar o repositório de forma colaborativa.
+## 👨‍💻 Equipe de Desenvolvimento
 
-2 - Elaborar o Readme.md
+- Diogo Cesar Furlan da Silva  
+- Guilherme da Silva Guia  
+- Leandro Campos Mendes  
+- Sergio Pytagoras Constantini  
+- Valéria Alves de Sousa  
+- Wilker Neves da Costa  
+- Yuri Batista de Almeida
 
-Sistema de Gerenciamento para Empório
+## 🎯 Objetivo do Projeto
 
-Projeto Extensionista I - IFMT | 2025/1
+O objetivo do projeto é desenvolver um sistema simples e funcional para **gerenciamento de um pequeno empório fictício**, simulando a rotina de um comércio local e promovendo a **aplicação prática dos conhecimentos adquiridos em sala de aula**.
 
-Este repositório abriga o desenvolvimento de um sistema web criado como parte de um Projeto Extensionista I do curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso - IFMT Campus Octayde Jorge.
+## 🛠️ Tecnologias Utilizadas
 
-O objetivo do projeto é desenvolver um sistema simples e funcional para gerenciamento de um pequeno empório fictício, simulando a rotina de um comércio local e promovendo a aplicação prática dos conhecimentos adquiridos em sala de aula.
+- **Linguagem:** PHP  
+- **Frameworks:** Laravel, Bootstrap  
+- **Banco de Dados:** PostgreSQL  
+- **Outras ferramentas:** HTML, CSS, JavaScript, Trello
 
-🎯 Objetivo do Sistema
+## 📍 Resultados e Desafios
 
-O sistema busca atender às principais necessidades de um pequeno empório, oferecendo funcionalidades como:
+### ✅ Resultados Alcançados
 
-Cadastro e controle de produtos;
+- Desenvolvimento de um sistema web funcional com operações de **CRUD** (Criar, Ler, Atualizar e Deletar) para o gerenciamento de produtos, clientes e vendas.
+- Integração com banco de dados **PostgreSQL**, garantindo a persistência e integridade dos dados.
+- Interface responsiva e amigável utilizando **Laravel com Blade** e **Bootstrap**.
+- Utilização do **Trello** para organizar tarefas, distribuir responsabilidades e acompanhar o progresso da equipe.
+- Aplicação dos conceitos fundamentais de **desenvolvimento web**, como MVC, rotas, autenticação e relacionamentos entre tabelas.
 
-Gerenciamento de estoque;
+### ⚠️ Desafios Enfrentados
 
-Registro de vendas;
+- Curva de aprendizado inicial com o **framework Laravel**, exigindo pesquisa e testes para compreender sua estrutura e boas práticas.
+- Integração entre backend e frontend, especialmente nos formulários e nas **validações de dados**.
+- Gerenciamento de código com **GitHub**, incluindo controle de versões e resolução de conflitos em equipe.
+- Adaptação às particularidades do **PostgreSQL**, incluindo comandos e configurações específicas.
+- **Gestão de tempo** e conciliação entre a complexidade do projeto e os prazos acadêmicos.
 
-Relatórios básicos de movimentações;
+---
 
-Interface intuitiva e acessível.
-
-🛠️ Tecnologias Utilizadas
-
-Linguagem: PHP
-
-Framework: Laravel, Bootstrap.
-
-Banco de Dados: PostgreSQL
-
-Outras ferramentas: HTML, CSS, JavaScript
-
-📍 Status do Projeto
-
-🚧 Em desenvolvimento
-
-🏫 Contexto Acadêmico
-
-Este projeto faz parte das ações extensionistas do IFMT, com foco em aproximar os alunos da realidade do mercado, integrando teoria e prática por meio do desenvolvimento de soluções tecnológicas aplicáveis a pequenos negócios.
