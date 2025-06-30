@@ -23,6 +23,16 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 - **Banco de Dados:** PostgreSQL  
 - **Outras ferramentas:** CSS, Toastify JS, Git, Trello
 
+## ⚙️ Funcionalidades Principais
+
+- Cadastro de vendas fiadas 
+- Controle automático de estoque ao realizar uma venda  
+- Entrada de novos produtos com descrição e quantidade  
+- Seleção de itens, definição de quantidade e forma de pagamento na venda  
+- Geração de relatórios simples de vendas 
+- Impressão de comprovante de compra  
+- Interface simples e intuitiva 
+
 ## 📍 Resultados e Desafios
 
 ### ✅ Resultados Alcançados
@@ -41,5 +51,39 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 - Adaptação às particularidades do **PostgreSQL**, incluindo comandos e configurações específicas.
 - **Gestão de tempo** e conciliação entre a complexidade do projeto e os prazos acadêmicos.
 
----
+# ⚙️ Como executar o projeto localmente
 
+1. **Clone o repositório:**
+    git clone https://github.com/seu-usuario/nome-do-repositorio.git
+    cd nome-do-repositorio
+   
+3. **Instale o PostgreSQL** e crie um banco de dados para o projeto.
+   
+5. **Instale o PHP e o Composer** (https://getcomposer.org/)
+   
+7. **Instale as dependências do projeto:**
+    composer install
+   
+9. **Configure o arquivo .env**
+    - Renomeie o arquivo .env.example para .env
+    - Edite as configurações de banco de dados de acordo com o PostgreSQL criado:
+        DB_CONNECTION=pgsql
+        DB_HOST=127.0.0.1
+        DB_PORT=5432
+        DB_DATABASE=nome_do_banco
+        DB_USERNAME=seu_usuario
+        DB_PASSWORD=sua_senha
+
+10. **Gere a chave da aplicação:**
+    php artisan key:generate
+
+11. **Rode as migrações do banco de dados:**
+    php artisan migrate
+
+12. **Rode as migrações do banco de dados:**
+    php artisan serve
+
+13. **Acesse o sistema no navegador:**
+    http://localhost:8000
+
+---
