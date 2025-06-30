@@ -67,12 +67,12 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 9. **Configure o arquivo .env**
     - Renomeie o arquivo .env.example para .env
     - Edite as configurações de banco de dados de acordo com o PostgreSQL criado:
-        DB_CONNECTION=pgsql
-        DB_HOST=127.0.0.1
-        DB_PORT=5432
-        DB_DATABASE=nome_do_banco
-        DB_USERNAME=seu_usuario
-        DB_PASSWORD=sua_senha
+        - DB_CONNECTION=pgsql
+        - DB_HOST=127.0.0.1
+        - DB_PORT=5432
+        - DB_DATABASE=nome_do_banco
+        - DB_USERNAME=seu_usuario
+        - DB_PASSWORD=sua_senha
 
 10. **Gere a chave da aplicação:**
     php artisan key:generate
