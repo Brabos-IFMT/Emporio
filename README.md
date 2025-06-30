@@ -80,7 +80,7 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 11. **Rode as migrações do banco de dados:**
     php artisan migrate
 
-12. **Rode as migrações do banco de dados:**
+12. **Inicie o servidor local:**
     php artisan serve
 
 13. **Acesse o sistema no navegador:**
