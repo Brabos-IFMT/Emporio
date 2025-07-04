@@ -25,10 +25,10 @@ O objetivo do projeto é desenvolver um sistema simples e funcional para **geren
 
 ## ⚙️ Funcionalidades Principais
 
-- Cadastro de vendas fiadas 
+- Registro de vendas
 - Controle automático de estoque ao realizar uma venda  
 - Entrada de novos produtos com descrição e quantidade  
-- Seleção de itens, definição de quantidade e forma de pagamento na venda  
+- Seleção de itens, definição de quantidade
 - Geração de relatórios simples de vendas 
 - Impressão de comprovante de compra  
 - Interface simples e intuitiva 
