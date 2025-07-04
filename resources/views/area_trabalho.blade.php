@@ -1,118 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('base')
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Tela de Início</title>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+@section('title', 'Área de Trabalho')
 
-  <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
-  <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
-  <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
-  <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('js/select.dataTables.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
-  <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
-</head>
-
-<body>
-
-  <div class="container-scroller">
-
-    <!-- partial:partials/_navbar.html -->
-    <!-- INÍCIO - BARRA SUPERIOR -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ route('area_trabalho') }}"><img src="images/logo-h.png"
-            class="mr-2" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ route('area_trabalho') }}"><img src="images/logo-mini.svg"
-            height="15rem" alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-        <!-- Foto do Usuário -->
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile" />
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              @if(session('usuario'))
-          <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit" class="dropdown-item">
-            <i class="ti-power-off text-primary"></i>
-            Logout/Sair
-          </button>
-          </form>
-        @endif
-            </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- FIM - BARRA SUPERIOR -->
-
-    <!-- partial -->
-    <!-- INÍCIO - BARRA LATERAL -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('area_trabalho') }}">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Página Inicial</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Usuário</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('registro.form') }}"> Criar Usuário </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('vendas.index') }}">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Vendas</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('produtos.index') }}">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Produtos</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('clientes.index') }}">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Clientes</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('vendas.create') }}">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">PDV</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- FIM - BARRA LATERAL -->
+@section('content')
 
       <!-- INÍCIO - CONTEÚDO DA PÁGINA -->
       <div class="main-panel">
@@ -128,8 +18,9 @@
             </div>
           </div>
           <div class="row">
+            <!-- Coluna da esquerda -->
             <div class="col-md-6 grid-margin stretch-card">
-              <div class="card tale-bg">
+              <div class="card tale-bg h-100">
                 <div class="card-people mt-auto">
                   <img src="images/dashboard/people.svg" alt="people">
                   <div class="weather-info">
@@ -147,8 +38,44 @@
               </div>
             </div>
 
+            <!-- Coluna da direita com 4 cards -->
+            <div class="col-md-6 grid-margin d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 mb-4 stretch-card">
+                  <div class="card card-tale h-100">
+                    <div class="card-body">
+                      <p class="mb-4">Vendas do Dia</p>
+                      <p class="fs-30 mb-2">{{ $vendasDoDia }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card">
+                  <div class="card card-dark-blue h-100">
+                    <div class="card-body">
+                      <p class="mb-4">Total de Vendas</p>
+                      <p class="fs-30 mb-2">{{ $totalVendas }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-lg-0 stretch-card">
+                  <div class="card card-light-blue h-100">
+                    <div class="card-body">
+                      <p class="mb-4">Total de produtos vendidos</p>
+                      <p class="fs-30 mb-2">{{ $totalProdutosVendidos }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 stretch-card">
+                  <div class="card card-light-danger h-100">
+                    <div class="card-body">
+                      <p class="mb-4">Total de Clientes</p>
+                      <p class="fs-30 mb-2">{{ $totalClientes }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
 
           <div class="row">
             <!-- Relatório de Vendas -->
@@ -219,83 +146,112 @@
             </div>
           </div>
         </div>
-
-        <!-- INÍCIO - RODAPÉ -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025. TSI - Brabos.
-              Todos os direitos Reservados.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Disciplina: Oficina de Prática
-              Extensionista I</span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Diogo, Guilherme, Leandro,
-              Valéria, Pytagoras, Wilker e Yuri</span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Instituo Federal de Mato Grosso
-              - <a href="https://cba.ifmt.edu.br" target="_blank">Cel. Octayde jorge da Silva</a></span>
-          </div>
-        </footer>
-        <!-- FIM - RODAPÉ -->
-
       </div>
-      <!-- main-panel ends -->
+      <!-- FIM - CONTEÚDO DA PÁGINA -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
 
-  <!-- plugins:js -->
-  <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
-  <script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
-  <script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-  <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
-
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="{{ asset('js/off-canvas.js') }}"></script>
-  <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
-  <script src="{{ asset('js/template.js') }}"></script>
-  <script src="{{ asset('js/settings.js') }}"></script>
-  <script src="{{ asset('js/todolist.js') }}"></script>
-  <script src="{{ asset('js/dashboard.js') }}"></script>
-  <script src="{{ asset('js/Chart.roundedBarCharts.js') }}"></script>
-  <!-- End custom js for this page-->
   <script>
-  $(document).ready(function() {
-    $('table').DataTable({
-      "paging": true,
-      "pageLength": 5,
-      "lengthChange": false,
-      "language": {
-        "decimal": ",",
-        "thousands": ".",
-        "sEmptyTable": "Nenhum registro encontrado",
-        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-        "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-        "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-        "sInfoPostFix": "",
-        "sSearch": "Pesquisar:",
-        "sUrl": "",
-        "sInfoThousands": ".",
-        "sLoadingRecords": "Carregando...",
-        "oPaginate": {
-          "sFirst": "Primeiro",
-          "sLast": "Último",
-          "sNext": "Próximo",
-          "sPrevious": "Anterior"
+    $(document).ready(function () {
+      $('table').DataTable({
+        "paging": true,
+        "pageLength": 5,
+        "lengthChange": false,
+        "language": {
+          "decimal": ",",
+          "thousands": ".",
+          "sEmptyTable": "Nenhum registro encontrado",
+          "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+          "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+          "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+          "sInfoPostFix": "",
+          "sSearch": "Pesquisar:",
+          "sUrl": "",
+          "sInfoThousands": ".",
+          "sLoadingRecords": "Carregando...",
+          "oPaginate": {
+            "sFirst": "Primeiro",
+            "sLast": "Último",
+            "sNext": "Próximo",
+            "sPrevious": "Anterior"
+          },
+          "oAria": {
+            "sSortAscending": ": Ordenar colunas de forma ascendente",
+            "sSortDescending": ": Ordenar colunas de forma descendente"
+          }
+        }
+      });
+    });
+  </script>
+  <script>
+
+    var graficoVendasCanvas = $("#graficoVendas").get(0).getContext("2d");
+
+    var VendasChart = new Chart(graficoVendasCanvas, {
+      type: 'bar',
+      data: {
+        labels: {!! json_encode($labels) !!},
+        datasets: [{
+          label: 'Vendas',
+          data: {!! json_encode($data) !!},
+          backgroundColor: '#4B49AC'
+        }]
+      },
+      options: {
+        cornerRadius: 5,
+        responsive: true,
+        maintainAspectRatio: true,
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 20,
+            bottom: 0
+          }
         },
-        "oAria": {
-          "sSortAscending": ": Ordenar colunas de forma ascendente",
-          "sSortDescending": ": Ordenar colunas de forma descendente"
+        scales: {
+          yAxes: [{
+            display: true,
+            gridLines: {
+              display: true,
+              drawBorder: false,
+              color: "#F2F2F2"
+            },
+            ticks: {
+              display: true,
+              beginAtZero: true,
+              callback: function (value) {
+                return value + ' vendas';
+              },
+              autoSkip: true,
+              maxTicksLimit: 10,
+              fontColor: "#6C7383"
+            }
+          }],
+          xAxes: [{
+            stacked: false,
+            ticks: {
+              beginAtZero: true,
+              fontColor: "#6C7383"
+            },
+            gridLines: {
+              color: "rgba(0, 0, 0, 0)",
+              display: false
+            },
+            barPercentage: 1
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 0
+          }
         }
       }
     });
-  });
-</script>
+  </script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     @if(session('toast'))
@@ -313,6 +269,5 @@
       @endif
   @endif
   </script>
-</body>
 
-</html>
+@endsection

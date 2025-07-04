@@ -3,15 +3,20 @@
 @section('title', 'Vendas')
 
 @section('content')
-  <div class="conten_venda">
+
+  <!-- Conteúdo principal -->
+  <div class="main-panel">
+    <div class="content-wrapper">
     <div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
+      <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
-      <div class="card-body">
-        <p class="card-title mb-0">Histórico de Vendas</p>
-        <div class="pt-3">
+        <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="card-title m-0">Histórico de Vendas</h4>
+        </div>
+
         <div class="table-responsive">
-          <table class="table table-striped table-borderless">
+          <table class="table table-hover">
           <thead>
             <tr>
             <th>Código</th>
@@ -51,7 +56,6 @@
     </div>
     </div>
   </div>
-
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     @if(session('toast'))
