@@ -15,7 +15,7 @@
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('js/select.dataTables.min.css') }}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
@@ -195,20 +195,11 @@
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
   <script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-  <script src="js/dataTables.select.min.js"></script>
-
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
+  <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <script src="js/typeahead.js"></script>
-  <script src="js/select2.js"></script>
+  <script src="{{ asset('js/typeahead.js') }}"></script>
+  <script src="{{ asset('js/select2.js') }}"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
   <script>
